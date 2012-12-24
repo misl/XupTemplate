@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+  <parent>
+    <groupId>nl.xup.template</groupId>
+    <artifactId>template-root</artifactId>
+    <version>0.1</version>
+    <relativePath>../pom.xml</relativePath>
+  </parent>
+
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>nl.xup.template</groupId>
+  <artifactId>template-archetype</artifactId>
+  <version>0.1</version>
+  <name>XupTemplate-Archetype</name>
+  <description>Archetype for creating new template implementations</description>
+  <url>http://opensource.xup.nl/template/archetype</url>
+</project>
