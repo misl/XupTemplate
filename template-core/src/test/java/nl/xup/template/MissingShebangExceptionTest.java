@@ -7,11 +7,11 @@ import junit.framework.TestCase;
  */
 public class MissingShebangExceptionTest extends TestCase {
 
-	// ----------------------------------------------------------------------
-	// Test cases
-	// ----------------------------------------------------------------------
+  // ----------------------------------------------------------------------
+  // Test cases
+  // ----------------------------------------------------------------------
 
-	public void testConstructors() {
-		assertNotNull( new MissingShebangException() );
-	}
+  public void testConstructors() {
+    assertNotNull( new MissingShebangException() );
+  }
 }

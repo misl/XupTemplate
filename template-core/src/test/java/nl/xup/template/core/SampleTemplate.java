@@ -8,17 +8,16 @@ import nl.xup.template.UnboundPropertyException;
 
 public class SampleTemplate extends AbstractTemplate {
 
-	protected SampleTemplate(TemplateEngine parentEngine) {
-		super(parentEngine);
-	}
+  protected SampleTemplate( TemplateEngine parentEngine ) {
+    super( parentEngine );
+  }
 
-	public String execute() throws UnboundPropertyException,
-			TemplateCompilationException {
-		return null;
-	}
+  public String execute() throws UnboundPropertyException, TemplateCompilationException {
+    return null;
+  }
 
-	public String execute(Bindings bindings) throws UnboundPropertyException,
-			TemplateCompilationException {
-		return null;
-	}
+  public String execute( Bindings bindings ) throws UnboundPropertyException,
+      TemplateCompilationException {
+    return null;
+  }
 }

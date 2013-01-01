@@ -14,50 +14,50 @@ import nl.xup.template.TemplateEngine;
  */
 public final class StringTemplateEngine implements TemplateEngine {
 
-	// ----------------------------------------------------------------------
-	// Class Attributes
-	// ----------------------------------------------------------------------
-	
-	private static final int MEMORY_SIZE_64K = 65536;
-	
-	// ----------------------------------------------------------------------
-	// Constructors
-	// ----------------------------------------------------------------------
+  // ----------------------------------------------------------------------
+  // Class Attributes
+  // ----------------------------------------------------------------------
 
-	// ----------------------------------------------------------------------
-	// Implementing: TemplateEngine Interface
-	// ----------------------------------------------------------------------
+  private static final int MEMORY_SIZE_64K = 65536;
 
-	/**
-	 * {@inheritDoc}
-	 */
-	public String getName() {
-		return "StringTemplate";
-	}
+  // ----------------------------------------------------------------------
+  // Constructors
+  // ----------------------------------------------------------------------
 
-	/**
-	 * {@inheritDoc}
-	 */
-	public Template createTemplate(Reader reader) throws IOException {
-		Template template = null;
-		
-		// Read in template into a string.
-		BufferedReader bufReader = new BufferedReader( reader );
-		StringBuffer templateBuffer = new StringBuffer();
-		char[] cbuf = new char[MEMORY_SIZE_64K];
-		int charsRead = 0;
-		while( charsRead != -1 ) {
-			charsRead = bufReader.read( cbuf, 0, MEMORY_SIZE_64K );
-			if ( charsRead != -1 ) {
-				templateBuffer.append( cbuf, 0, charsRead);
-			}
-		}
-		
-		// Use this template string to create the actual template.
-		org.antlr.stringtemplate.StringTemplate wrappedTemplate = new org.antlr.stringtemplate.StringTemplate();
-		wrappedTemplate.setTemplate( templateBuffer.toString() );
-		template = new StringTemplate( this, wrappedTemplate );
-		
-		return template;
-	}
+  // ----------------------------------------------------------------------
+  // Implementing: TemplateEngine Interface
+  // ----------------------------------------------------------------------
+
+  /**
+   * {@inheritDoc}
+   */
+  public String getName() {
+    return "StringTemplate";
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  public Template createTemplate( Reader reader ) throws IOException {
+    Template template = null;
+
+    // Read in template into a string.
+    BufferedReader bufReader = new BufferedReader( reader );
+    StringBuffer templateBuffer = new StringBuffer();
+    char[] cbuf = new char[MEMORY_SIZE_64K];
+    int charsRead = 0;
+    while( charsRead != -1 ) {
+      charsRead = bufReader.read( cbuf, 0, MEMORY_SIZE_64K );
+      if( charsRead != -1 ) {
+        templateBuffer.append( cbuf, 0, charsRead );
+      }
+    }
+
+    // Use this template string to create the actual template.
+    org.antlr.stringtemplate.StringTemplate wrappedTemplate = new org.antlr.stringtemplate.StringTemplate();
+    wrappedTemplate.setTemplate( templateBuffer.toString() );
+    template = new StringTemplate( this, wrappedTemplate );
+
+    return template;
+  }
 }

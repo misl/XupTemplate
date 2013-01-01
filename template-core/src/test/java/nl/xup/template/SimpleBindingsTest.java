@@ -9,172 +9,171 @@ import junit.framework.TestCase;
 
 public class SimpleBindingsTest extends TestCase {
 
-	// ----------------------------------------------------------------------
-	// Test cases
-	// ----------------------------------------------------------------------
+  // ----------------------------------------------------------------------
+  // Test cases
+  // ----------------------------------------------------------------------
 
-	public void testDefaultConstructor() {
-		Bindings bindings = new SimpleBindings();
-		
-		assertNotNull( bindings );
-		assertEquals( 0, bindings.size() );
-	}
-	
-	public void testFailingMergeConstructor() {
-		Bindings bindings = null;
-		try {
-			bindings = new SimpleBindings( null );
-			assertFalse( "NullPointerException expected", true );
-		} catch ( NullPointerException npe ) {
-			assertTrue( true );
-		}
-		
-		// test map with null key 
-		Map< String, Object> mapje = new HashMap<String, Object>();
-		mapje.put( null, this );
-		try {
-			bindings = new SimpleBindings( mapje );
-			assertFalse( "NullPointerException expected", true );
-		} catch ( NullPointerException npe ) {
-			assertTrue( true );
-		}
+  public void testDefaultConstructor() {
+    Bindings bindings = new SimpleBindings();
 
-		// test map with empty key
-		mapje.clear();
-		mapje.put( "", this );
-		try {
-			bindings = new SimpleBindings( mapje );
-			assertFalse( "IllegalArgumentException expected", true );
-		} catch ( IllegalArgumentException npe ) {
-			assertTrue( true );
-		}
-	}
+    assertNotNull( bindings );
+    assertEquals( 0, bindings.size() );
+  }
 
-	public void testValidMergeConstructor() {
-		Map< String, Object> mapje = new HashMap<String, Object>();
-		mapje.put( "key", "value" );
-		Bindings bindings = new SimpleBindings( mapje );
+  public void testFailingMergeConstructor() {
+    try {
+      new SimpleBindings( null );
+      assertFalse( "NullPointerException expected", true );
+    } catch( NullPointerException npe ) {
+      assertTrue( true );
+    }
 
-		assertEquals( 1, bindings.size() );
-	}
+    // test map with null key
+    Map<String, Object> mapje = new HashMap<String, Object>();
+    mapje.put( null, this );
+    try {
+      new SimpleBindings( mapje );
+      assertFalse( "NullPointerException expected", true );
+    } catch( NullPointerException npe ) {
+      assertTrue( true );
+    }
 
-	public void testContainsKey() {
-		Map< String, Object> mapje = new HashMap<String, Object>();
-		mapje.put( "key", "value" );
-		Bindings bindings = new SimpleBindings( mapje );
+    // test map with empty key
+    mapje.clear();
+    mapje.put( "", this );
+    try {
+      new SimpleBindings( mapje );
+      assertFalse( "IllegalArgumentException expected", true );
+    } catch( IllegalArgumentException npe ) {
+      assertTrue( true );
+    }
+  }
 
-		assertTrue( bindings.containsKey( "key" ) );
-		assertFalse( bindings.containsKey( "missing" ) );
-	}
+  public void testValidMergeConstructor() {
+    Map<String, Object> mapje = new HashMap<String, Object>();
+    mapje.put( "key", "value" );
+    Bindings bindings = new SimpleBindings( mapje );
 
-	public void testIsEmpty() {
-		Map< String, Object> mapje = new HashMap<String, Object>();
-		mapje.put( "key", "value" );
-		Bindings bindings = new SimpleBindings( mapje );
+    assertEquals( 1, bindings.size() );
+  }
 
-		assertFalse( bindings.isEmpty() );
-		bindings.clear();
-		assertTrue( bindings.isEmpty() );
-	}
+  public void testContainsKey() {
+    Map<String, Object> mapje = new HashMap<String, Object>();
+    mapje.put( "key", "value" );
+    Bindings bindings = new SimpleBindings( mapje );
 
-	public void testGet() {
-		Map< String, Object> mapje = new HashMap<String, Object>();
-		mapje.put( "key", "value" );
-		Bindings bindings = new SimpleBindings( mapje );
+    assertTrue( bindings.containsKey( "key" ) );
+    assertFalse( bindings.containsKey( "missing" ) );
+  }
 
-		assertEquals( "value", bindings.get( "key" ) );
-	}
+  public void testIsEmpty() {
+    Map<String, Object> mapje = new HashMap<String, Object>();
+    mapje.put( "key", "value" );
+    Bindings bindings = new SimpleBindings( mapje );
 
-	public void testPut() {
-		Map< String, Object> mapje = new HashMap<String, Object>();
-		mapje.put( "key", "value" );
-		Bindings bindings = new SimpleBindings( mapje );
+    assertFalse( bindings.isEmpty() );
+    bindings.clear();
+    assertTrue( bindings.isEmpty() );
+  }
 
-		assertEquals( "value", bindings.put( "key", "noot" ) );
-		assertEquals( null, bindings.put( "key2", "mies" ) );
+  public void testGet() {
+    Map<String, Object> mapje = new HashMap<String, Object>();
+    mapje.put( "key", "value" );
+    Bindings bindings = new SimpleBindings( mapje );
 
-		assertEquals( "noot", bindings.get( "key" ) );
-		assertEquals( "mies", bindings.get( "key2" ) );
-	}
+    assertEquals( "value", bindings.get( "key" ) );
+  }
 
-	public void testRemove() {
-		Map< String, Object> mapje = new HashMap<String, Object>();
-		mapje.put( "key", "value" );
-		Bindings bindings = new SimpleBindings( mapje );
+  public void testPut() {
+    Map<String, Object> mapje = new HashMap<String, Object>();
+    mapje.put( "key", "value" );
+    Bindings bindings = new SimpleBindings( mapje );
 
-		assertEquals( "value", bindings.remove( "key" ) );
-		assertFalse( bindings.containsKey( "key" ) );
-		assertEquals( 0, bindings.size() );
-	}
+    assertEquals( "value", bindings.put( "key", "noot" ) );
+    assertEquals( null, bindings.put( "key2", "mies" ) );
 
-	public void testClear() {
-		Map< String, Object> mapje = new HashMap<String, Object>();
-		mapje.put( "key", "value" );
-		Bindings bindings = new SimpleBindings( mapje );
+    assertEquals( "noot", bindings.get( "key" ) );
+    assertEquals( "mies", bindings.get( "key2" ) );
+  }
 
-		bindings.clear();
-		assertFalse( bindings.containsKey( "key" ) );
-		assertEquals( 0, bindings.size() );
-	}
+  public void testRemove() {
+    Map<String, Object> mapje = new HashMap<String, Object>();
+    mapje.put( "key", "value" );
+    Bindings bindings = new SimpleBindings( mapje );
 
-	public void testContainsValue() {
-		Map< String, Object> mapje = new HashMap<String, Object>();
-		mapje.put( "key", "value" );
-		Bindings bindings = new SimpleBindings( mapje );
+    assertEquals( "value", bindings.remove( "key" ) );
+    assertFalse( bindings.containsKey( "key" ) );
+    assertEquals( 0, bindings.size() );
+  }
 
-		assertTrue( bindings.containsValue( "value" ) );
-		assertFalse( bindings.containsValue( "aap" ) );
-	}
+  public void testClear() {
+    Map<String, Object> mapje = new HashMap<String, Object>();
+    mapje.put( "key", "value" );
+    Bindings bindings = new SimpleBindings( mapje );
 
-	public void testEntrySet() {
-		Map< String, Object> mapje = new HashMap<String, Object>();
-		mapje.put( "key", "value" );
-		Bindings bindings = new SimpleBindings( mapje );
-		Set<Entry<String, Object>> entrySet = bindings.entrySet();
+    bindings.clear();
+    assertFalse( bindings.containsKey( "key" ) );
+    assertEquals( 0, bindings.size() );
+  }
 
-		assertEquals( entrySet.size(), mapje.size() );
-	}
+  public void testContainsValue() {
+    Map<String, Object> mapje = new HashMap<String, Object>();
+    mapje.put( "key", "value" );
+    Bindings bindings = new SimpleBindings( mapje );
 
-	public void testKeySet() {
-		Map< String, Object> mapje = new HashMap<String, Object>();
-		mapje.put( "key", "value" );
-		Bindings bindings = new SimpleBindings( mapje );
+    assertTrue( bindings.containsValue( "value" ) );
+    assertFalse( bindings.containsValue( "aap" ) );
+  }
 
-		assertEquals( bindings.keySet().size(), mapje.size() );
-	}
+  public void testEntrySet() {
+    Map<String, Object> mapje = new HashMap<String, Object>();
+    mapje.put( "key", "value" );
+    Bindings bindings = new SimpleBindings( mapje );
+    Set<Entry<String, Object>> entrySet = bindings.entrySet();
 
-	public void testValues() {
-		Map< String, Object> mapje = new HashMap<String, Object>();
-		mapje.put( "key", "value" );
-		Bindings bindings = new SimpleBindings( mapje );
+    assertEquals( entrySet.size(), mapje.size() );
+  }
 
-		assertEquals( bindings.values().size(), mapje.size() );
-	}
+  public void testKeySet() {
+    Map<String, Object> mapje = new HashMap<String, Object>();
+    mapje.put( "key", "value" );
+    Bindings bindings = new SimpleBindings( mapje );
 
-	public void testExceptions() {
-		Map< String, Object> mapje = new HashMap<String, Object>();
-		mapje.put( "key", "value" );
-		Bindings bindings = new SimpleBindings( mapje );
+    assertEquals( bindings.keySet().size(), mapje.size() );
+  }
 
-		try {
-			bindings.containsKey( null );
-			assertFalse( "Exception expected", true );
-		} catch( NullPointerException ex ) {
-			assertTrue( "Exception expected", true );
-		}
+  public void testValues() {
+    Map<String, Object> mapje = new HashMap<String, Object>();
+    mapje.put( "key", "value" );
+    Bindings bindings = new SimpleBindings( mapje );
 
-		try {
-			bindings.containsKey( "" );
-			assertFalse( "Exception expected", true );
-		} catch( IllegalArgumentException ex ) {
-			assertTrue( "Exception expected", true );
-		}
+    assertEquals( bindings.values().size(), mapje.size() );
+  }
 
-		try {
-			bindings.containsKey( Boolean.TRUE );
-			assertFalse( "Exception expected", true );
-		} catch( ClassCastException ex ) {
-			assertTrue( "Exception expected", true );
-		}
-	}
+  public void testExceptions() {
+    Map<String, Object> mapje = new HashMap<String, Object>();
+    mapje.put( "key", "value" );
+    Bindings bindings = new SimpleBindings( mapje );
+
+    try {
+      bindings.containsKey( null );
+      assertFalse( "Exception expected", true );
+    } catch( NullPointerException ex ) {
+      assertTrue( "Exception expected", true );
+    }
+
+    try {
+      bindings.containsKey( "" );
+      assertFalse( "Exception expected", true );
+    } catch( IllegalArgumentException ex ) {
+      assertTrue( "Exception expected", true );
+    }
+
+    try {
+      bindings.containsKey( Boolean.TRUE );
+      assertFalse( "Exception expected", true );
+    } catch( ClassCastException ex ) {
+      assertTrue( "Exception expected", true );
+    }
+  }
 }

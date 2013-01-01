@@ -18,49 +18,52 @@
 package nl.xup.template;
 
 /**
- * This exception indicates the presence of unbound properties
- * during template excecution. Unbound properties are properties
- * for which no binding is present even though they are used in 
- * the template. In other words, this exception indicates a missing
- * binding or a template error.
+ * This exception indicates the presence of unbound properties during template
+ * excecution. Unbound properties are properties for which no binding is present
+ * even though they are used in the template. In other words, this exception
+ * indicates a missing binding or a template error.
  * 
  * @author Minto van der Sluis
  */
 public class UnboundPropertyException extends Exception {
 
-	private static final long serialVersionUID = 1L;
-	
-	// ----------------------------------------------------------------------
-	// Attributes
-	// ----------------------------------------------------------------------
+  private static final long serialVersionUID = 1L;
 
-	private String propertyName = null;
-	
-	// ----------------------------------------------------------------------
-	// Constructors
-	// ----------------------------------------------------------------------
+  // ----------------------------------------------------------------------
+  // Attributes
+  // ----------------------------------------------------------------------
 
-	/**
-	 * Creates an instance of this exception.
-	 * 
-	 * @param property the property name that was unbound.
-	 * @param message the error message.
-	 * @param throwable passing through lowlevel exceptions.
-	 */
-	public UnboundPropertyException( String property, String message, Throwable throwable ) {
-		super( message, throwable );
-		propertyName = property;
-	}
+  private String propertyName = null;
 
-	// ----------------------------------------------------------------------
-	// Getters and Setters
-	// ----------------------------------------------------------------------
+  // ----------------------------------------------------------------------
+  // Constructors
+  // ----------------------------------------------------------------------
 
-	/**
-	 * Gives the name of an unbound property.
-	 * @return String with the property name.
-	 */
-	public final String getPropertyName() {
-		return propertyName;
-	}
+  /**
+   * Creates an instance of this exception.
+   * 
+   * @param property
+   *          the property name that was unbound.
+   * @param message
+   *          the error message.
+   * @param throwable
+   *          passing through lowlevel exceptions.
+   */
+  public UnboundPropertyException( String property, String message, Throwable throwable ) {
+    super( message, throwable );
+    propertyName = property;
+  }
+
+  // ----------------------------------------------------------------------
+  // Getters and Setters
+  // ----------------------------------------------------------------------
+
+  /**
+   * Gives the name of an unbound property.
+   * 
+   * @return String with the property name.
+   */
+  public final String getPropertyName() {
+    return propertyName;
+  }
 }

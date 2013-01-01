@@ -17,46 +17,46 @@ import nl.xup.template.TemplateEngine;
  */
 public final class GroovyTemplateEngine implements TemplateEngine {
 
-	// ----------------------------------------------------------------------
-	// Class Attributes
-	// ----------------------------------------------------------------------
+  // ----------------------------------------------------------------------
+  // Class Attributes
+  // ----------------------------------------------------------------------
 
-	private static final String TEMPLATE_ENGINE_NAME = "groovy";
-	
-	// ----------------------------------------------------------------------
-	// Object Attributes
-	// ----------------------------------------------------------------------
-	
-	private SimpleTemplateEngine groovyEngine = new SimpleTemplateEngine(); 
-	
-	// ----------------------------------------------------------------------
-	// Constructors
-	// ----------------------------------------------------------------------
+  private static final String TEMPLATE_ENGINE_NAME = "groovy";
 
-	// ----------------------------------------------------------------------
-	// Implementing: TemplateEngine Interface
-	// ----------------------------------------------------------------------
+  // ----------------------------------------------------------------------
+  // Object Attributes
+  // ----------------------------------------------------------------------
 
-	/**
-	 * {@inheritDoc}
-	 */
-	public String getName() {
-		return TEMPLATE_ENGINE_NAME;
-	}
+  private SimpleTemplateEngine groovyEngine = new SimpleTemplateEngine();
 
-	/**
-	 * {@inheritDoc}
-	 */
-	public Template createTemplate(Reader reader) throws IOException, TemplateCompilationException {
-		Template template = null;
-		
-		try {
-			template = new GroovyTemplate( this, groovyEngine.createTemplate( reader ) );
-		} catch ( GroovyRuntimeException e ) {
-			// Omvormen tot implementatie onafhankelijke fout.
-			throw new TemplateCompilationException( e );
-		}
-		
-		return template;
-	}
+  // ----------------------------------------------------------------------
+  // Constructors
+  // ----------------------------------------------------------------------
+
+  // ----------------------------------------------------------------------
+  // Implementing: TemplateEngine Interface
+  // ----------------------------------------------------------------------
+
+  /**
+   * {@inheritDoc}
+   */
+  public String getName() {
+    return TEMPLATE_ENGINE_NAME;
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  public Template createTemplate( Reader reader ) throws IOException, TemplateCompilationException {
+    Template template = null;
+
+    try {
+      template = new GroovyTemplate( this, groovyEngine.createTemplate( reader ) );
+    } catch( GroovyRuntimeException e ) {
+      // Omvormen tot implementatie onafhankelijke fout.
+      throw new TemplateCompilationException( e );
+    }
+
+    return template;
+  }
 }

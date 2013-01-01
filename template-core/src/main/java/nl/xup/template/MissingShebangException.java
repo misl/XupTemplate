@@ -18,20 +18,19 @@
 package nl.xup.template;
 
 /**
- * This exception indicate that the input reader has no shebang.
- * Due to the missing shebang in the reader, the TemplateEngineFactory
- * is unable to determine which engine to use for turning that 
- * reader into a Template.
+ * This exception indicate that the input reader has no shebang. Due to the
+ * missing shebang in the reader, the TemplateEngineFactory is unable to
+ * determine which engine to use for turning that reader into a Template.
  * 
  * @author Minto van der Sluis
  */
-@SuppressWarnings("serial")
+@SuppressWarnings( "serial" )
 public class MissingShebangException extends Exception {
-  
-	// ----------------------------------------------------------------------
-	// Constructors
-	// ----------------------------------------------------------------------
 
-	public MissingShebangException() {
-	}
+  // ----------------------------------------------------------------------
+  // Constructors
+  // ----------------------------------------------------------------------
+
+  public MissingShebangException() {
+  }
 }

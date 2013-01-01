@@ -18,73 +18,73 @@
 package nl.xup.template;
 
 /**
- * This exception indicates template compilation fialed, probably
- * due to template errors.
+ * This exception indicates template compilation fialed, probably due to
+ * template errors.
  * 
- * @author amd32857 (Minto van der Sluis)
+ * @author Minto van der Sluis
  */
-@SuppressWarnings("serial")
+@SuppressWarnings( "serial" )
 public class TemplateCompilationException extends Exception {
 
-	// ----------------------------------------------------------------------
-	// Attributes
-	// ----------------------------------------------------------------------
+  // ----------------------------------------------------------------------
+  // Attributes
+  // ----------------------------------------------------------------------
 
-	private int line = -1;
-	private int column = -1;
-  
-	// ----------------------------------------------------------------------
-	// Constructors
-	// ----------------------------------------------------------------------
+  private int line = -1;
+  private int column = -1;
 
-	/**
-	 * Contructs a TemplateCompilationException with the given underlying 
-	 * cause.
-	 * 
-	 * @param throwable the underlying Throwable that caused this exception
-	 * to be raised.
-	 */
-	public TemplateCompilationException( Throwable throwable ) {
-		super( throwable );
-	}
+  // ----------------------------------------------------------------------
+  // Constructors
+  // ----------------------------------------------------------------------
 
-	/**
-	 * Contructs a TemplateCompilationException with the location of the error
-	 * and the given underlying cause.
-	 * 
-	 * @param errorLine the line number where the underlying cause took place.
-	 * @param errorColumn the column number where the underlying cause took 
-	 * place.
-	 * @param throwable the underlying Throwable that caused this exception
-	 * to be raised.
-	 */
-	public TemplateCompilationException( int errorLine, int errorColumn, Throwable throwable ) {
-		super( throwable );
-		line = errorLine;
-		column = errorColumn;
-	}
-	
-	// ----------------------------------------------------------------------
-	// Public interface
-	// ----------------------------------------------------------------------
+  /**
+   * Contructs a TemplateCompilationException with the given underlying cause.
+   * 
+   * @param throwable
+   *          the underlying Throwable that caused this exception to be raised.
+   */
+  public TemplateCompilationException( Throwable throwable ) {
+    super( throwable );
+  }
 
-	/**
-	 * Gives the line number on which the template compilation failed.
-	 * @return Integer with the line number where template compilation
-	 * failed. If the line number is unknown -1 will be returned.
-	 */
-	public final int getLine()
-	{
-		return line;
-	}
+  /**
+   * Contructs a TemplateCompilationException with the location of the error and
+   * the given underlying cause.
+   * 
+   * @param errorLine
+   *          the line number where the underlying cause took place.
+   * @param errorColumn
+   *          the column number where the underlying cause took place.
+   * @param throwable
+   *          the underlying Throwable that caused this exception to be raised.
+   */
+  public TemplateCompilationException( int errorLine, int errorColumn, Throwable throwable ) {
+    super( throwable );
+    line = errorLine;
+    column = errorColumn;
+  }
 
-	/**
-	 * Gives the column on which the template compilation failed.
-	 * @return Integer with the column number where template compilation
-	 * failed. If the column number is unknown -1 will be returned.
-	 */
-	public final int getColumn()
-	{
-		return column;
-	}
+  // ----------------------------------------------------------------------
+  // Public interface
+  // ----------------------------------------------------------------------
+
+  /**
+   * Gives the line number on which the template compilation failed.
+   * 
+   * @return Integer with the line number where template compilation failed. If
+   *         the line number is unknown -1 will be returned.
+   */
+  public final int getLine() {
+    return line;
+  }
+
+  /**
+   * Gives the column on which the template compilation failed.
+   * 
+   * @return Integer with the column number where template compilation failed.
+   *         If the column number is unknown -1 will be returned.
+   */
+  public final int getColumn() {
+    return column;
+  }
 }

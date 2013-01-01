@@ -13,8 +13,7 @@
   <artifactId>template-stringtemplate</artifactId>
   <name>XupTemplate-StringTemplate</name>
   <description>StringTemplate based implementation of the Xup Template API</description>
-  <version>0.1</version>
-  <url>http://oss.xup.nl/template</url>
+  <url>https://github.com/misl/XupTemplate</url>
   
   <dependencies>
     <dependency>

@@ -21,27 +21,28 @@ import java.io.IOException;
 import java.io.Reader;
 
 /**
- * Factory for creating template objects template scripts.  
+ * Factory for creating template objects template scripts.
  * 
  * @author Minto van der Sluis
  */
 public interface TemplateEngine {
 
-	/**
-	 * Return the name of the template engine.
-	 * @return String containing the engine name.
-	 */
-	String getName();
-	
-	/**
-	 * Creates a new template from the given reader. The
-	 * reader should refer to a valid template script.
-	 * 
-	 * @param reader template script to be processed.
-	 * @return Template object with the compiled template script.
-	 * @throws IOException
-	 * @throws TemplateCompilationException
-	 */
-	Template createTemplate( Reader reader )
-		throws IOException, TemplateCompilationException;
+  /**
+   * Return the name of the template engine.
+   * 
+   * @return String containing the engine name.
+   */
+  String getName();
+
+  /**
+   * Creates a new template from the given reader. The reader should refer to a
+   * valid template script.
+   * 
+   * @param reader
+   *          template script to be processed.
+   * @return Template object with the compiled template script.
+   * @throws IOException
+   * @throws TemplateCompilationException
+   */
+  Template createTemplate( Reader reader ) throws IOException, TemplateCompilationException;
 }

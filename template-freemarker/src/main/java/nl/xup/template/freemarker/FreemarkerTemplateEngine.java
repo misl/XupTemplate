@@ -14,46 +14,44 @@ import freemarker.template.Configuration;
  * 
  * @author Minto van der Sluis
  */
-public final class FreemarkerTemplateEngine implements TemplateEngine 
-{
-	// ----------------------------------------------------------------------
-	// Class Attributes
-	// ----------------------------------------------------------------------
-	
-	private static final String TEMPLATE_ENGINE_NAME = "Freemarker";
-	
-	// ----------------------------------------------------------------------
-	// Constructors
-	// ----------------------------------------------------------------------
+public final class FreemarkerTemplateEngine implements TemplateEngine {
+  // ----------------------------------------------------------------------
+  // Class Attributes
+  // ----------------------------------------------------------------------
 
-	// ----------------------------------------------------------------------
-	// Implementing: TemplateEngine Interface
-	// ----------------------------------------------------------------------
+  private static final String TEMPLATE_ENGINE_NAME = "Freemarker";
 
-	/**
-	 * {@inheritDoc}
-	 */
-	public String getName() 
-	{
-		return TEMPLATE_ENGINE_NAME;
-	}
+  // ----------------------------------------------------------------------
+  // Constructors
+  // ----------------------------------------------------------------------
 
-	/**
-	 * {@inheritDoc}
-	 */
-	public Template createTemplate(Reader reader) throws IOException, TemplateCompilationException 
-	{
-		Template template = null;
-		
-		try {
-			Configuration configuration = new Configuration();
-			freemarker.template.Template freemarkerTemplate = new freemarker.template.Template( null, reader, configuration );
-			template = new FreemarkerTemplate( this, freemarkerTemplate );
-		} catch ( ParseException e ) {
-			// Transform into an implementation independent exception.
-			throw new TemplateCompilationException( e.lineNumber, e.columnNumber, e );
-		}
-		
-		return template;
-	}
+  // ----------------------------------------------------------------------
+  // Implementing: TemplateEngine Interface
+  // ----------------------------------------------------------------------
+
+  /**
+   * {@inheritDoc}
+   */
+  public String getName() {
+    return TEMPLATE_ENGINE_NAME;
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  public Template createTemplate( Reader reader ) throws IOException, TemplateCompilationException {
+    Template template = null;
+
+    try {
+      Configuration configuration = new Configuration();
+      freemarker.template.Template freemarkerTemplate = new freemarker.template.Template( null,
+          reader, configuration );
+      template = new FreemarkerTemplate( this, freemarkerTemplate );
+    } catch( ParseException e ) {
+      // Transform into an implementation independent exception.
+      throw new TemplateCompilationException( e.lineNumber, e.columnNumber, e );
+    }
+
+    return template;
+  }
 }

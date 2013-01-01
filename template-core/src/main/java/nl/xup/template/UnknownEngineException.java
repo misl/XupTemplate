@@ -18,47 +18,48 @@
 package nl.xup.template;
 
 /**
- * This exception indicates that the input reader refers to
- * an unknown TemplateEngine implementation. In other words,
- * the shebang in the reader points to an unknown engine. This
- * indicates that either the shebang contains a typo or the 
- * engine is missing from the classpath.
+ * This exception indicates that the input reader refers to an unknown
+ * TemplateEngine implementation. In other words, the shebang in the reader
+ * points to an unknown engine. This indicates that either the shebang contains
+ * a typo or the engine is missing from the classpath.
  * 
  * @author Minto van der Sluis
  */
-@SuppressWarnings("serial")
+@SuppressWarnings( "serial" )
 public class UnknownEngineException extends Exception {
 
-	// ----------------------------------------------------------------------
-	// Attributes
-	// ----------------------------------------------------------------------
+  // ----------------------------------------------------------------------
+  // Attributes
+  // ----------------------------------------------------------------------
 
-	private String engineName;
-	
-	// ----------------------------------------------------------------------
-	// Constructors
-	// ----------------------------------------------------------------------
+  private String engineName;
 
-	/**
-	 * Contructs an UnknownEngineException with the given name as the
-	 * unknown engine name.
-	 * 
-	 * @param name the name of the unknown engine.
-	 */
-	public UnknownEngineException( String name ) {
-		engineName = name;
-	}
+  // ----------------------------------------------------------------------
+  // Constructors
+  // ----------------------------------------------------------------------
 
-	// ----------------------------------------------------------------------
-	// Getters and Setters
-	// ----------------------------------------------------------------------
+  /**
+   * Contructs an UnknownEngineException with the given name as the unknown
+   * engine name.
+   * 
+   * @param name
+   *          the name of the unknown engine.
+   */
+  public UnknownEngineException( String name ) {
+    engineName = name;
+  }
 
-	/**
-	 * Gives the supposed name of a template engine which is not known
-	 * to the TemplateEngineFactory.
-	 * @return String with the supposed name of a template engine.
-	 */
-	public final String getEngineName() {
-		return engineName;
-	}
+  // ----------------------------------------------------------------------
+  // Getters and Setters
+  // ----------------------------------------------------------------------
+
+  /**
+   * Gives the supposed name of a template engine which is not known to the
+   * TemplateEngineFactory.
+   * 
+   * @return String with the supposed name of a template engine.
+   */
+  public final String getEngineName() {
+    return engineName;
+  }
 }

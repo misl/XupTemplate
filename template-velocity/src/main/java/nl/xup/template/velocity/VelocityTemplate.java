@@ -18,106 +18,106 @@ import org.apache.velocity.exception.MethodInvocationException;
 import org.apache.velocity.exception.ParseErrorException;
 
 /**
- * Template API Template implementation for the Apache Velocity 
- * templating engine.
+ * Template API Template implementation for the Apache Velocity templating
+ * engine.
  * 
  * @author Minto van der Sluis
  */
 public final class VelocityTemplate extends AbstractTemplate {
 
-	// ----------------------------------------------------------------------
-	// Static Attributes
-	// ----------------------------------------------------------------------
+  // ----------------------------------------------------------------------
+  // Static Attributes
+  // ----------------------------------------------------------------------
 
-	private static final int KILOBYTE = 1024;
-	
-	// ----------------------------------------------------------------------
-	// Object Attributes
-	// ----------------------------------------------------------------------
+  private static final int KILOBYTE = 1024;
 
-	private String templateContent = null;
-	
-	// ----------------------------------------------------------------------
-	// Constructors
-	// ----------------------------------------------------------------------
+  // ----------------------------------------------------------------------
+  // Object Attributes
+  // ----------------------------------------------------------------------
 
-	/**
-	 * Constructor to create a Velocity Template implementation instance.
-	 * 
-	 * @param engine TemplateEngine that created this instance.
-	 * @param reader content of the template.
-	 */
-	VelocityTemplate( TemplateEngine engine, Reader templateReader ) throws IOException {
-		super( engine );
-		
-		// Read the actual contents of the template.
-		templateContent = getTemplateContent(templateReader);
-	}
+  private String templateContent = null;
 
-	// ----------------------------------------------------------------------
-	// Implemented abstract methods from AbstractTemplate
-	// ----------------------------------------------------------------------
+  // ----------------------------------------------------------------------
+  // Constructors
+  // ----------------------------------------------------------------------
 
-	/**
-	 * {@inheritDoc}
-	 */
-	public String execute() throws UnboundPropertyException, TemplateCompilationException {
-		return execute( null );
-	}
+  /**
+   * Constructor to create a Velocity Template implementation instance.
+   * 
+   * @param engine
+   *          TemplateEngine that created this instance.
+   * @param reader
+   *          content of the template.
+   */
+  VelocityTemplate( TemplateEngine engine, Reader templateReader ) throws IOException {
+    super( engine );
 
-	/**
-	 * {@inheritDoc}
-	 */
-	public String execute(Bindings bindings) throws UnboundPropertyException, TemplateCompilationException {
-		// Build a map with all bindings, making sure the specified bindings
-		// take precedence.
-		Bindings usedBindings = getBindings();
-		if ( bindings != null ) {
-			usedBindings.putAll( bindings );
-		} 
-		
-		// Create a context with out bindings.
-		VelocityContext context = new VelocityContext( usedBindings );
-		StringWriter writer = new StringWriter();
-		StringReader reader = new StringReader( templateContent );
-		
-		try {
-			Velocity.evaluate( context, writer, "template", reader );
-		} catch (ParseErrorException e) {
-			throw new TemplateCompilationException(
-					e.getLineNumber(), e.getColumnNumber(), e );
-		} catch (MethodInvocationException e) {
-			throw new TemplateCompilationException(
-					e.getLineNumber(), e.getColumnNumber(), e );
-		} catch (IOException e) {
-			throw new TemplateCompilationException( e );
-		} finally {
-			reader.close();
-		}
+    // Read the actual contents of the template.
+    templateContent = getTemplateContent( templateReader );
+  }
 
-		return writer.toString();
-	}
+  // ----------------------------------------------------------------------
+  // Implemented abstract methods from AbstractTemplate
+  // ----------------------------------------------------------------------
 
-	// ----------------------------------------------------------------------
-	// Private methods
-	// ----------------------------------------------------------------------
+  /**
+   * {@inheritDoc}
+   */
+  public String execute() throws UnboundPropertyException, TemplateCompilationException {
+    return execute( null );
+  }
 
-	/**
-	 * A method to extract the template content into a string.
-	 */
-	private String getTemplateContent(Reader templateReader) 
-			throws IOException {
-		BufferedReader reader = new BufferedReader( templateReader );
-		StringBuilder template = new StringBuilder();
-		char[] buf = new char[ KILOBYTE ];
-		int numRead=0;
-		
-		// Loop over the content till there is no more.
-		while((numRead=reader.read(buf)) != -1){
-			template.append(buf, 0, numRead);
-		}
-		reader.close();
-		
-		return template.toString();
-	}
+  /**
+   * {@inheritDoc}
+   */
+  public String execute( Bindings bindings ) throws UnboundPropertyException,
+      TemplateCompilationException {
+    // Build a map with all bindings, making sure the specified bindings
+    // take precedence.
+    Bindings usedBindings = getBindings();
+    if( bindings != null ) {
+      usedBindings.putAll( bindings );
+    }
+
+    // Create a context with out bindings.
+    VelocityContext context = new VelocityContext( usedBindings );
+    StringWriter writer = new StringWriter();
+    StringReader reader = new StringReader( templateContent );
+
+    try {
+      Velocity.evaluate( context, writer, "template", reader );
+    } catch( ParseErrorException e ) {
+      throw new TemplateCompilationException( e.getLineNumber(), e.getColumnNumber(), e );
+    } catch( MethodInvocationException e ) {
+      throw new TemplateCompilationException( e.getLineNumber(), e.getColumnNumber(), e );
+    } catch( IOException e ) {
+      throw new TemplateCompilationException( e );
+    } finally {
+      reader.close();
+    }
+
+    return writer.toString();
+  }
+
+  // ----------------------------------------------------------------------
+  // Private methods
+  // ----------------------------------------------------------------------
+
+  /**
+   * A method to extract the template content into a string.
+   */
+  private String getTemplateContent( Reader templateReader ) throws IOException {
+    BufferedReader reader = new BufferedReader( templateReader );
+    StringBuilder template = new StringBuilder();
+    char[] buf = new char[KILOBYTE];
+    int numRead = 0;
+
+    // Loop over the content till there is no more.
+    while( (numRead = reader.read( buf )) != -1 ) {
+      template.append( buf, 0, numRead );
+    }
+    reader.close();
+
+    return template.toString();
+  }
 }

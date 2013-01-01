@@ -9,12 +9,10 @@
   </parent>
 
   <modelVersion>4.0.0</modelVersion>
-  <groupId>nl.xup.template</groupId>
   <artifactId>template-core</artifactId>
   <name>XupTemplate-Core</name>
   <description>Xup Template API</description>
-  <version>0.1</version>
-  <url>http://oss.xup.nl/template</url>
+  <url>https://github.com/misl/XupTemplate</url>
   
   <dependencies>
     <dependency>
@@ -22,7 +20,7 @@
       <artifactId>slf4j-api</artifactId>
     </dependency>
 
-  <!-- The following depencies are for unittesting only. -->
+    <!-- The following depencies are for unittesting only. -->
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>

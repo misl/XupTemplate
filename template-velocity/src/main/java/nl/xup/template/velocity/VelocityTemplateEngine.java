@@ -9,52 +9,52 @@ import nl.xup.template.Template;
 import nl.xup.template.TemplateEngine;
 
 /**
- * Engine for creating Apache Velocity based templates.
+ * Engine for Apache Velocity based templates.
  * 
  * @author Minto van der Sluis
  */
 public final class VelocityTemplateEngine implements TemplateEngine {
-	
-	// Apache Velocity need initialisation that needs to be done only once.
-	static {
-		try {
-			Velocity.init();
-		} catch (Exception e) {
-			// We tried our best, but initialisation failed.
-			// TODO: improve handling
-			e.printStackTrace();
-		}
-	}
 
-	// ----------------------------------------------------------------------
-	// Class Attributes
-	// ----------------------------------------------------------------------
-	
-	private static final String TEMPLATE_ENGINE_NAME = "Velocity";
+  // Apache Velocity need initialization that needs to be done only once.
+  static {
+    try {
+      Velocity.init();
+    } catch( Exception e ) {
+      // We tried our best, but initialization failed.
+      // TODO: improve handling
+      e.printStackTrace();
+    }
+  }
 
-	// ----------------------------------------------------------------------
-	// Attributes
-	// ----------------------------------------------------------------------
-	
-	// ----------------------------------------------------------------------
-	// Constructors
-	// ----------------------------------------------------------------------
+  // ----------------------------------------------------------------------
+  // Class Attributes
+  // ----------------------------------------------------------------------
 
-	// ----------------------------------------------------------------------
-	// Implementing: TemplateEngine Interface
-	// ----------------------------------------------------------------------
+  private static final String TEMPLATE_ENGINE_NAME = "Velocity";
 
-	/**
-	 * {@inheritDoc}
-	 */
-	public String getName() {
-		return TEMPLATE_ENGINE_NAME;
-	}
+  // ----------------------------------------------------------------------
+  // Attributes
+  // ----------------------------------------------------------------------
 
-	/**
-	 * {@inheritDoc}
-	 */
-	public Template createTemplate(Reader reader) throws IOException {
-		return new VelocityTemplate( this, reader );
-	}
+  // ----------------------------------------------------------------------
+  // Constructors
+  // ----------------------------------------------------------------------
+
+  // ----------------------------------------------------------------------
+  // Implementing: TemplateEngine Interface
+  // ----------------------------------------------------------------------
+
+  /**
+   * {@inheritDoc}
+   */
+  public String getName() {
+    return TEMPLATE_ENGINE_NAME;
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  public Template createTemplate( Reader reader ) throws IOException {
+    return new VelocityTemplate( this, reader );
+  }
 }

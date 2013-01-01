@@ -13,8 +13,7 @@
   <artifactId>template-velocity</artifactId>
   <name>XupTemplate-velocity</name>
   <description>Apache Velocity based implementation of the Xup Template API</description>
-  <version>0.1</version>
-  <url>http://oss.xup.nl/template</url>
+  <url>https://github.com/misl/XupTemplate</url>
   
   <dependencies>
     <dependency>

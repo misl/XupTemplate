@@ -1,4 +1,3 @@
-
 /**
  * Freemarker implementation of the Template API. For more information 
  * on Freemarker see http://freemarker.sourceforge.net

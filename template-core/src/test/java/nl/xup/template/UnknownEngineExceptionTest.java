@@ -7,18 +7,18 @@ import junit.framework.TestCase;
  */
 public class UnknownEngineExceptionTest extends TestCase {
 
-	// ----------------------------------------------------------------------
-	// Test cases
-	// ----------------------------------------------------------------------
+  // ----------------------------------------------------------------------
+  // Test cases
+  // ----------------------------------------------------------------------
 
-	public void testConstructors() {
-		assertNotNull( new UnknownEngineException( "" ) );
-	}
+  public void testConstructors() {
+    assertNotNull( new UnknownEngineException( "" ) );
+  }
 
-	public void testGetterSetter() {
-		UnknownEngineException ueEx = new UnknownEngineException( "name" );
-		
-		// No property set yet.
-		assertEquals( "name",  ueEx.getEngineName() );
-	}
+  public void testGetterSetter() {
+    UnknownEngineException ueEx = new UnknownEngineException( "name" );
+
+    // No property set yet.
+    assertEquals( "name", ueEx.getEngineName() );
+  }
 }

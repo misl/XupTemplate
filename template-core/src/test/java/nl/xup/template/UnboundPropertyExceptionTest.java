@@ -7,22 +7,22 @@ import junit.framework.TestCase;
  */
 public class UnboundPropertyExceptionTest extends TestCase {
 
-	// ----------------------------------------------------------------------
-	// Test cases
-	// ----------------------------------------------------------------------
+  // ----------------------------------------------------------------------
+  // Test cases
+  // ----------------------------------------------------------------------
 
-	public void testConstructors() {
-		assertNotNull( new UnboundPropertyException( "", "", null) );
-	}
+  public void testConstructors() {
+    assertNotNull( new UnboundPropertyException( "", "", null ) );
+  }
 
-	public void testGetterSetter() {
-		UnboundPropertyException upEx = new UnboundPropertyException( null, "", null );
-		
-		// No property set yet.
-		assertEquals( null,  upEx.getPropertyName() );
-		
-		// Let's do it again, but this time with a property.
-		upEx = new UnboundPropertyException( "prop", "", null );
-		assertEquals( "prop", upEx.getPropertyName() );
-	}
+  public void testGetterSetter() {
+    UnboundPropertyException upEx = new UnboundPropertyException( null, "", null );
+
+    // No property set yet.
+    assertEquals( null, upEx.getPropertyName() );
+
+    // Let's do it again, but this time with a property.
+    upEx = new UnboundPropertyException( "prop", "", null );
+    assertEquals( "prop", upEx.getPropertyName() );
+  }
 }

@@ -14,29 +14,27 @@ import nl.xup.template.TemplateEngine;
  */
 public class SampleEngine implements TemplateEngine {
 
-	// ----------------------------------------------------------------------
-	// Class Attributes
-	// ----------------------------------------------------------------------
-	
-	private static final String TEMPLATE_ENGINE_NAME = "test";
+  // ----------------------------------------------------------------------
+  // Class Attributes
+  // ----------------------------------------------------------------------
 
-	// ----------------------------------------------------------------------
-	// Implementing: TemplateEngine Interface
-	// ----------------------------------------------------------------------
+  private static final String TEMPLATE_ENGINE_NAME = "test";
 
-	/**
-	 * {@inheritDoc}
-	 */
-	public String getName() 
-	{
-		return TEMPLATE_ENGINE_NAME;
-	}
+  // ----------------------------------------------------------------------
+  // Implementing: TemplateEngine Interface
+  // ----------------------------------------------------------------------
 
-	/**
-	 * {@inheritDoc}
-	 */
-	public Template createTemplate(Reader reader) throws IOException, TemplateCompilationException 
-	{
-		return new SampleTemplate( this );
-	}
+  /**
+   * {@inheritDoc}
+   */
+  public String getName() {
+    return TEMPLATE_ENGINE_NAME;
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  public Template createTemplate( Reader reader ) throws IOException, TemplateCompilationException {
+    return new SampleTemplate( this );
+  }
 }

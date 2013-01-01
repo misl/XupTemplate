@@ -9,10 +9,8 @@
   </parent>
 
   <modelVersion>4.0.0</modelVersion>
-  <groupId>nl.xup.template</groupId>
   <artifactId>template-archetype</artifactId>
-  <version>0.1</version>
   <name>XupTemplate-Archetype</name>
   <description>Archetype for creating new template implementations</description>
-  <url>http://opensource.xup.nl/template/archetype</url>
+  <url>https://github.com/misl/XupTemplate</url>
 </project>
