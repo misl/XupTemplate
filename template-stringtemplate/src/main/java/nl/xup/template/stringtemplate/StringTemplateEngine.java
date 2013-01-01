@@ -4,6 +4,9 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.Reader;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import nl.xup.template.Template;
 import nl.xup.template.TemplateEngine;
 
@@ -14,15 +17,29 @@ import nl.xup.template.TemplateEngine;
  */
 public final class StringTemplateEngine implements TemplateEngine {
 
-  // ----------------------------------------------------------------------
-  // Class Attributes
-  // ----------------------------------------------------------------------
+  // -------------------------------------------------------------------------
+  // Class attributes
+  // -------------------------------------------------------------------------
+
+  private static Logger logger = LoggerFactory.getLogger( StringTemplateEngine.class );
 
   private static final int MEMORY_SIZE_64K = 65536;
 
   // ----------------------------------------------------------------------
   // Constructors
   // ----------------------------------------------------------------------
+
+  // -------------------------------------------------------------------------
+  // OSGi Blueprint lifecycle
+  // -------------------------------------------------------------------------
+
+  public void init() {
+    logger.info( "Initializaing 'StringTemplate' based TemplateEngine" );
+  }
+
+  public void destroy() {
+    logger.info( "Removed 'StringTemplate' based TemplateEngine" );
+  }
 
   // ----------------------------------------------------------------------
   // Implementing: TemplateEngine Interface

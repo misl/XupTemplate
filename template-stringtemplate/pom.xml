@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
 
   <parent>
     <groupId>nl.xup.template</groupId>
@@ -8,21 +10,21 @@
     <relativePath>../pom.xml</relativePath>
   </parent>
 
-  <modelVersion>4.0.0</modelVersion>
   <groupId>nl.xup.template.stringtemplate</groupId>
   <artifactId>template-stringtemplate</artifactId>
+  <packaging>bundle</packaging>
   <name>XupTemplate-StringTemplate</name>
   <description>StringTemplate based implementation of the Xup Template API</description>
   <url>https://github.com/misl/XupTemplate</url>
-  
+
   <dependencies>
     <dependency>
       <groupId>nl.xup.template</groupId>
       <artifactId>template-core</artifactId>
     </dependency>
     <dependency>
-      <groupId>org.slf4j</groupId>
-      <artifactId>slf4j-api</artifactId>
+      <groupId>org.ops4j.pax.logging</groupId>
+      <artifactId>pax-logging-api</artifactId>
     </dependency>
     <dependency>
       <groupId>org.antlr</groupId>
@@ -30,7 +32,7 @@
       <version>3.2.1</version>
     </dependency>
 
-  <!-- The following depencies are for unittesting only. -->
+    <!-- The following depencies are for unittesting only. -->
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
@@ -42,6 +44,30 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
-  
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.felix</groupId>
+        <artifactId>maven-bundle-plugin</artifactId>
+        <extensions>true</extensions>
+        <configuration>
+          <instructions>
+            <Bundle-Name>${project.name}</Bundle-Name>
+            <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
+            <Implementation-Version>${project.version}</Implementation-Version>
+            <Export-Package></Export-Package>
+            <Import-Package>
+              *
+            </Import-Package>
+          </instructions>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
 </project>
 

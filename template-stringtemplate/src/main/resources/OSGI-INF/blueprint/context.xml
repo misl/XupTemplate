@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blueprint 
+  xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+  xmlns:ext="http://aries.apache.org/blueprint/xmlns/blueprint-ext/v1.0.0"
+  default-timeout="10000">
+
+	<bean id="templateEngineService" 
+    class="nl.xup.template.stringtemplate.StringTemplateEngine" 
+    init-method="init" destroy-method="destroy" >
+  </bean>
+    
+  <service ref="templateEngineService" interface="nl.xup.template.TemplateEngine">
+    <service-properties>
+      <entry key="name" value="StringTemplate" />
+    </service-properties>
+  </service>
+    
+</blueprint>

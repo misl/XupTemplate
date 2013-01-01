@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blueprint 
+  xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+  xmlns:ext="http://aries.apache.org/blueprint/xmlns/blueprint-ext/v1.0.0"
+  default-timeout="10000">
+
+  <bean id="templateEngineFactory" scope="singleton"
+    class="nl.xup.template.TemplateEngineFactory"
+    init-method="init" destroy-method="destroy" >
+  </bean>
+  <reference-list  
+    interface="nl.xup.template.TemplateEngine"
+    member-type="service-object"
+    availability="optional">
+    <reference-listener ref="templateEngineFactory" bind-method="bind" unbind-method="unbind"/>
+  </reference-list>
+    
+  <service ref="templateEngineFactory" 
+    interface="nl.xup.template.TemplateEngineFactory" />
+    
+</blueprint>

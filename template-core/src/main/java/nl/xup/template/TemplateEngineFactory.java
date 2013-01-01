@@ -71,6 +71,21 @@ public final class TemplateEngineFactory {
     LOG.info( "Started" );
   }
 
+  // -------------------------------------------------------------------------
+  // OSGi Blueprint reference binding
+  // -------------------------------------------------------------------------
+
+  public void bind( TemplateEngine engine, Map<?, ?> properties ) {
+    engines.put( engine.getName(), engine );
+    LOG.info( "Added '{}' engine", engine.getName() );
+  }
+
+  public void unbind( TemplateEngine engine ) {
+    if( engines.remove( engine ) != null ) {
+      LOG.info( "Removed '{}' engine", engine.getName() );
+    }
+  }
+
   // ----------------------------------------------------------------------
   // Static Methods / Interface (public scope)
   // ----------------------------------------------------------------------
