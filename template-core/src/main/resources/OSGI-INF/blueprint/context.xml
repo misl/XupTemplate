@@ -4,18 +4,18 @@
   xmlns:ext="http://aries.apache.org/blueprint/xmlns/blueprint-ext/v1.0.0"
   default-timeout="10000">
 
-  <bean id="templateEngineFactory" scope="singleton"
-    class="nl.xup.template.TemplateEngineFactory"
+  <bean id="templateEngineService" scope="singleton"
+    class="nl.xup.template.osgi.TemplateEngineServiceImpl"
     init-method="init" destroy-method="destroy" >
   </bean>
   <reference-list  
     interface="nl.xup.template.TemplateEngine"
     member-type="service-object"
     availability="optional">
-    <reference-listener ref="templateEngineFactory" bind-method="bind" unbind-method="unbind"/>
+    <reference-listener ref="templateEngineService" bind-method="bind" unbind-method="unbind"/>
   </reference-list>
     
-  <service ref="templateEngineFactory" 
-    interface="nl.xup.template.TemplateEngineFactory" />
+  <service ref="templateEngineService" 
+    interface="nl.xup.template.TemplateEngineService" />
     
 </blueprint>
