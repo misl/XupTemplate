@@ -18,7 +18,7 @@
 package nl.xup.template;
 
 /**
- * This exception indicates template compilation fialed, probably due to
+ * This exception indicates template compilation failed, probably due to
  * template errors.
  * 
  * @author Minto van der Sluis
@@ -38,7 +38,7 @@ public class TemplateCompilationException extends Exception {
   // ----------------------------------------------------------------------
 
   /**
-   * Contructs a TemplateCompilationException with the given underlying cause.
+   * Constructs a TemplateCompilationException with the given underlying cause.
    * 
    * @param throwable
    *          the underlying Throwable that caused this exception to be raised.
@@ -48,8 +48,20 @@ public class TemplateCompilationException extends Exception {
   }
 
   /**
-   * Contructs a TemplateCompilationException with the location of the error and
-   * the given underlying cause.
+   * Constructs a TemplateCompilationException with the given message and cause.
+   * 
+   * @param message
+   *          a message describing the cause for this exception to be raised.
+   * @param throwable
+   *          the underlying Throwable that caused this exception to be raised.
+   */
+  public TemplateCompilationException( String message, Throwable cause ) {
+    super( message, cause );
+  }
+
+  /**
+   * Constructs a TemplateCompilationException with the location of the error
+   * and the given underlying cause.
    * 
    * @param errorLine
    *          the line number where the underlying cause took place.

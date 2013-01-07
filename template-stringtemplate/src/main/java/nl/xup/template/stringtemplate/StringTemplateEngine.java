@@ -6,8 +6,11 @@ import java.io.Reader;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.stringtemplate.v4.ST;
+import org.stringtemplate.v4.compiler.STException;
 
 import nl.xup.template.Template;
+import nl.xup.template.TemplateCompilationException;
 import nl.xup.template.TemplateEngine;
 
 /**
@@ -55,7 +58,7 @@ public final class StringTemplateEngine implements TemplateEngine {
   /**
    * {@inheritDoc}
    */
-  public Template createTemplate( Reader reader ) throws IOException {
+  public Template createTemplate( Reader reader ) throws IOException, TemplateCompilationException {
     Template template = null;
 
     // Read in template into a string.
@@ -71,9 +74,13 @@ public final class StringTemplateEngine implements TemplateEngine {
     }
 
     // Use this template string to create the actual template.
-    org.antlr.stringtemplate.StringTemplate wrappedTemplate = new org.antlr.stringtemplate.StringTemplate();
-    wrappedTemplate.setTemplate( templateBuffer.toString() );
-    template = new StringTemplate( this, wrappedTemplate );
+    ST internalTemplate;
+    try {
+      internalTemplate = new ST( templateBuffer.toString() );
+    } catch( STException e ) {
+      throw new TemplateCompilationException( e );
+    }
+    template = new StringTemplate( this, internalTemplate );
 
     return template;
   }

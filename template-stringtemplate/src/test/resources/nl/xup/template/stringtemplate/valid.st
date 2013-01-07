@@ -1,1 +1,1 @@
-Hallo $naam$, met $x$!
+Hallo <naam>, met <x>!

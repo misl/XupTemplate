@@ -3,12 +3,15 @@
  */
 package nl.xup.template.stringtemplate;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
 
-import junit.framework.TestCase;
 import nl.xup.template.Bindings;
 import nl.xup.template.SimpleBindings;
 import nl.xup.template.Template;
@@ -17,10 +20,14 @@ import nl.xup.template.TemplateEngine;
 import nl.xup.template.TemplateEngineFactory;
 import nl.xup.template.UnboundPropertyException;
 
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+
 /**
  * @author Minto van der Sluis
  */
-public class StringTemplateEngineTest extends TestCase {
+public class StringTemplateEngineTest {
 
   // ----------------------------------------------------------------------
   // Attributes
@@ -31,18 +38,14 @@ public class StringTemplateEngineTest extends TestCase {
   // Overloaded methods
   // ----------------------------------------------------------------------
 
-  @Override
-  protected void setUp() throws Exception {
-    super.setUp();
-
+  @Before
+  public void setUp() throws Exception {
     // Retrieve the engine from the factory.
     _engine = TemplateEngineFactory.getEngine( "StringTemplate" );
   }
 
-  @Override
-  protected void tearDown() throws Exception {
-    super.tearDown();
-
+  @After
+  public void tearDown() throws Exception {
     // Clean up the engine.
     _engine = null;
   }
@@ -51,6 +54,7 @@ public class StringTemplateEngineTest extends TestCase {
   // Test cases
   // ----------------------------------------------------------------------
 
+  @Test
   public void testGetStringTemplate() throws IOException, TemplateCompilationException,
       UnboundPropertyException {
     assertNotNull( _engine );
@@ -95,6 +99,7 @@ public class StringTemplateEngineTest extends TestCase {
     assertEquals( "Hallo , met !", template.execute( bindings ) );
   }
 
+  @Test( expected = TemplateCompilationException.class )
   public void testInvalidTemplate() throws IOException, TemplateCompilationException,
       UnboundPropertyException {
     // Read template resource.
@@ -102,10 +107,6 @@ public class StringTemplateEngineTest extends TestCase {
     InputStream stream = Thread.currentThread().getContextClassLoader()
         .getResourceAsStream( templateName );
     Reader reader = new InputStreamReader( stream );
-
-    // Since StringTemplate does not throw any errors. Just the
-    // template is returned.
-    Template template = _engine.createTemplate( reader );
-    assertEquals( "Hallo ", template.execute() );
+    _engine.createTemplate( reader );
   }
 }
