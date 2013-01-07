@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
 
   <parent>
     <groupId>nl.xup.template</groupId>
@@ -8,10 +9,10 @@
     <relativePath>../pom.xml</relativePath>
   </parent>
 
-  <modelVersion>4.0.0</modelVersion>
   <groupId>nl.xup.template.velocity</groupId>
   <artifactId>template-velocity</artifactId>
   <name>XupTemplate-velocity</name>
+  <packaging>bundle</packaging>
   <description>Apache Velocity based implementation of the Xup Template API</description>
   <url>https://github.com/misl/XupTemplate</url>
   
@@ -19,10 +20,6 @@
     <dependency>
       <groupId>nl.xup.template</groupId>
       <artifactId>template-core</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.ops4j.pax.logging</groupId>
-      <artifactId>pax-logging-api</artifactId>
     </dependency>
     <dependency>
       <groupId>org.apache.velocity</groupId>
