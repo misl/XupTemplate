@@ -10,6 +10,9 @@ import nl.xup.template.Template;
 import nl.xup.template.TemplateCompilationException;
 import nl.xup.template.TemplateEngine;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * Engine for creating Groovy based templates.
  * 
@@ -20,6 +23,8 @@ public final class GroovyTemplateEngine implements TemplateEngine {
   // ----------------------------------------------------------------------
   // Class Attributes
   // ----------------------------------------------------------------------
+
+  private static Logger logger = LoggerFactory.getLogger( GroovyTemplateEngine.class );
 
   private static final String TEMPLATE_ENGINE_NAME = "groovy";
 
@@ -32,6 +37,18 @@ public final class GroovyTemplateEngine implements TemplateEngine {
   // ----------------------------------------------------------------------
   // Constructors
   // ----------------------------------------------------------------------
+
+  // -------------------------------------------------------------------------
+  // OSGi Blueprint lifecycle
+  // -------------------------------------------------------------------------
+
+  public void init() {
+    logger.info( "Initializaing 'groovy' based TemplateEngine" );
+  }
+
+  public void destroy() {
+    logger.info( "Removed 'groovy' based TemplateEngine" );
+  }
 
   // ----------------------------------------------------------------------
   // Implementing: TemplateEngine Interface

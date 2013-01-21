@@ -6,6 +6,10 @@ import java.io.Reader;
 import nl.xup.template.Template;
 import nl.xup.template.TemplateCompilationException;
 import nl.xup.template.TemplateEngine;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import freemarker.core.ParseException;
 import freemarker.template.Configuration;
 
@@ -19,11 +23,25 @@ public final class FreemarkerTemplateEngine implements TemplateEngine {
   // Class Attributes
   // ----------------------------------------------------------------------
 
+  private static Logger logger = LoggerFactory.getLogger( FreemarkerTemplateEngine.class );
+
   private static final String TEMPLATE_ENGINE_NAME = "Freemarker";
 
   // ----------------------------------------------------------------------
   // Constructors
   // ----------------------------------------------------------------------
+
+  // -------------------------------------------------------------------------
+  // OSGi Blueprint lifecycle
+  // -------------------------------------------------------------------------
+
+  public void init() {
+    logger.info( "Initializaing 'Freemarker' based TemplateEngine" );
+  }
+
+  public void destroy() {
+    logger.info( "Removed 'Freemarker' based TemplateEngine" );
+  }
 
   // ----------------------------------------------------------------------
   // Implementing: TemplateEngine Interface

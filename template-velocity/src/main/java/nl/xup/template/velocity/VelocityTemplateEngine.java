@@ -3,10 +3,12 @@ package nl.xup.template.velocity;
 import java.io.IOException;
 import java.io.Reader;
 
-import org.apache.velocity.app.Velocity;
-
 import nl.xup.template.Template;
 import nl.xup.template.TemplateEngine;
+
+import org.apache.velocity.app.Velocity;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Engine for Apache Velocity based templates.
@@ -30,6 +32,8 @@ public final class VelocityTemplateEngine implements TemplateEngine {
   // Class Attributes
   // ----------------------------------------------------------------------
 
+  private static Logger logger = LoggerFactory.getLogger( VelocityTemplateEngine.class );
+
   private static final String TEMPLATE_ENGINE_NAME = "Velocity";
 
   // ----------------------------------------------------------------------
@@ -39,6 +43,18 @@ public final class VelocityTemplateEngine implements TemplateEngine {
   // ----------------------------------------------------------------------
   // Constructors
   // ----------------------------------------------------------------------
+
+  // -------------------------------------------------------------------------
+  // OSGi Blueprint lifecycle
+  // -------------------------------------------------------------------------
+
+  public void init() {
+    logger.info( "Initializaing 'Velocity' based TemplateEngine" );
+  }
+
+  public void destroy() {
+    logger.info( "Removed 'Velocity' based TemplateEngine" );
+  }
 
   // ----------------------------------------------------------------------
   // Implementing: TemplateEngine Interface
